@@ -235,8 +235,9 @@ def send_email_notification(to_email, subject, body, html_body=None):
         return False, error_msg
 
 # Routes
-@app.route('/')
-def home():
+@app.route('/api')
+@app.route('/api/')
+def api_home():
     """API home endpoint"""
     return jsonify({
         "message": "Virtual Islamic University Backend API",
@@ -253,6 +254,17 @@ def home():
             "logout": "/api/admin/logout"
         }
     })
+
+# Serve static HTML files
+@app.route('/')
+@app.route('/index.html')
+def index():
+    """Serve main index page"""
+    try:
+        with open('index.html', 'r', encoding='utf-8') as f:
+            return f.read()
+    except FileNotFoundError:
+        return "Index page not found", 404
 
 # Admin Authentication Routes
 @app.route('/api/admin/login', methods=['POST'])
@@ -371,6 +383,42 @@ def admin_login_page():
             return f.read()
     except FileNotFoundError:
         return "Admin login file not found", 404
+
+@app.route('/admission.html')
+def admission():
+    """Serve admission page"""
+    try:
+        with open('admission.html', 'r', encoding='utf-8') as f:
+            return f.read()
+    except FileNotFoundError:
+        return "Admission page not found", 404
+
+@app.route('/courses.html')
+def courses():
+    """Serve courses page"""
+    try:
+        with open('courses.html', 'r', encoding='utf-8') as f:
+            return f.read()
+    except FileNotFoundError:
+        return "Courses page not found", 404
+
+@app.route('/faculty.html')
+def faculty():
+    """Serve faculty page"""
+    try:
+        with open('faculty.html', 'r', encoding='utf-8') as f:
+            return f.read()
+    except FileNotFoundError:
+        return "Faculty page not found", 404
+
+@app.route('/donation.html')
+def donation():
+    """Serve donation page"""
+    try:
+        with open('donation.html', 'r', encoding='utf-8') as f:
+            return f.read()
+    except FileNotFoundError:
+        return "Donation page not found", 404
 
 @app.route('/api/submit-contact', methods=['POST'])
 def submit_contact():
@@ -953,6 +1001,25 @@ Virtual Islamic University Team
             'error': 'جواب بھیجنے میں خرابی'
         }), 500
 
+# Health check endpoint for Railway
+@app.route('/health')
+def health_check():
+    """Health check endpoint for Railway monitoring"""
+    try:
+        # Test database connection
+        db.session.execute('SELECT 1')
+        return jsonify({
+            'status': 'healthy',
+            'timestamp': datetime.utcnow().isoformat(),
+            'university': os.getenv('UNIVERSITY_NAME', 'Virtual Islamic University')
+        }), 200
+    except Exception as e:
+        return jsonify({
+            'status': 'unhealthy',
+            'error': str(e),
+            'timestamp': datetime.utcnow().isoformat()
+        }), 503
+
 # Error handlers
 @app.errorhandler(404)
 def not_found(error):
@@ -986,7 +1053,7 @@ if __name__ == '__main__':
     app.run(
         debug=os.getenv('FLASK_DEBUG', 'False').lower() == 'true',
         host='0.0.0.0',
-        port=int(os.getenv('PORT', 10000))
+        port=int(os.getenv('PORT', 8000))
     )
 
 # For production deployment (Gunicorn will import this)
