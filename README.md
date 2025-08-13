@@ -1,4 +1,159 @@
-# Virtual Islamic University - Web Application
+# Virtual Islamic University Website 🕌📚
+
+A comprehensive Islamic educational platform built with Flask and modern web technologies, offering online courses in Quranic studies, Arabic language, and Islamic sciences.
+
+## Features
+
+### 🎓 Educational Features
+- **Course Management**: Multiple Islamic courses including Quran, Arabic, and Islamic Studies
+- **Admission System**: Complete online admission process with application tracking
+- **Course Details**: Detailed course information with multimedia content
+- **Faculty Profiles**: Information about experienced Islamic scholars and teachers
+
+### 🛠️ Technical Features
+- **Responsive Design**: Mobile-first approach with Bootstrap RTL support
+- **Admin Dashboard**: Comprehensive admin panel for managing applications and contacts
+- **Email Integration**: Automated email notifications for admissions and contact forms
+- **Database Management**: SQLAlchemy ORM with PostgreSQL support for production
+- **Authentication System**: Secure admin authentication with session management
+- **Multilingual Support**: Arabic and Urdu language support with proper fonts
+
+## Technology Stack
+
+### Backend
+- **Flask**: Python web framework
+- **SQLAlchemy**: Database ORM
+- **PostgreSQL**: Production database
+- **Flask-Mail**: Email functionality
+- **Gunicorn**: Production WSGI server
+
+### Frontend
+- **HTML5/CSS3**: Modern web standards
+- **Bootstrap 5**: Responsive framework with RTL support
+- **JavaScript**: Interactive functionality
+- **AOS**: Animation on scroll effects
+- **Custom Arabic/Urdu fonts**: Mehr Nastaliq and Noto fonts
+
+## Installation
+
+### Prerequisites
+- Python 3.8+
+- PostgreSQL (for production)
+- Git
+
+### Local Development
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/virtual-islamic-university.git
+cd virtual-islamic-university
+```
+
+2. Create virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+4. Set up environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your configuration
+```
+
+5. Initialize database:
+```bash
+python app.py
+```
+
+6. Run the application:
+```bash
+python app.py
+```
+
+The application will be available at `http://localhost:10000`
+
+## Deployment
+
+This application is configured for deployment on:
+- **Render.com** (Recommended)
+- **Heroku**
+- **Railway**
+- Any platform supporting Python/Flask
+
+### Environment Variables
+
+Set the following environment variables in your hosting platform:
+
+```env
+FLASK_ENV=production
+FLASK_DEBUG=False
+SECRET_KEY=your-secret-key
+DATABASE_URL=postgresql://...
+MAIL_USERNAME=your-email@gmail.com
+MAIL_PASSWORD=your-app-password
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=secure-password
+```
+
+## Course Offerings
+
+### 📖 Quranic Studies (فہم القرآن)
+- Quranic recitation and Tajweed
+- Tafseer and interpretation
+- Quranic Arabic
+
+### 🔤 Arabic Language (اللغة العربية)
+- Classical Arabic grammar
+- Modern Standard Arabic
+- Arabic literature
+
+### 🕌 Islamic Studies (علوم الدین)
+- Islamic theology (Aqeedah)
+- Islamic jurisprudence (Fiqh)
+- Hadith studies
+- Islamic history
+
+## Admin Panel
+
+Access the admin panel at `/admin_login.html` to:
+- View and manage admission applications
+- Respond to contact form submissions
+- View statistics and analytics
+- Approve/reject applications
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/new-feature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/new-feature`)
+5. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+- **Email**: info.alislahmedia@gmail.com
+- **Website**: [Virtual Islamic University](https://your-domain.com)
+- **Phone**: +92-300-1234567
+
+## Acknowledgments
+
+- Islamic scholars and educators who contributed to course content
+- Open source community for the tools and libraries used
+- Students and users who provide feedback and suggestions
+
+---
+
+**بارک اللہ فیکم** - May Allah bless you all
 
 A complete web application for Virtual Islamic University with course management, admission system, contact forms, and admin dashboard.
 
