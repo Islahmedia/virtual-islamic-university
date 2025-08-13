@@ -3,5 +3,9 @@ Flask-CORS==4.0.0
 Flask-SQLAlchemy==3.0.5
 Flask-Mail==0.9.1
 python-dotenv==1.0.0
-gunicorn==21.2.0
+# gunicorn is not needed for PythonAnywhere
+# gunicorn==21.2.0
+# PostgreSQL for production deployments (Railway, Render, etc.)
 psycopg2-binary==2.9.7
+# MySQL support for PythonAnywhere paid accounts
+mysqlclient==2.2.0
