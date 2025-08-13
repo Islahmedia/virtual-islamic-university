@@ -1057,5 +1057,4 @@ if __name__ == '__main__':
     )
 
 # For production deployment (Gunicorn will import this)
-if not app.debug:
-    init_db()
+# Database initialization is handled by start.py or startup scripts

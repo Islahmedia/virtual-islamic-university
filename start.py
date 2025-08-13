@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-Production startup script for Render.com deployment
+Startup script for Railway deployment
 """
 import os
-from app import app, db
+from app import app, init_db
 
-# Ensure the app context is available
-with app.app_context():
-    # Create all database tables
-    db.create_all()
-    print("Database tables created successfully!")
+# Initialize database on startup
+try:
+    init_db()
+    print("Database initialized successfully!")
+except Exception as e:
+    print(f"Database initialization error: {e}")
 
 if __name__ == "__main__":
-    # This will be handled by gunicorn in production
-    port = int(os.environ.get("PORT", 10000))
+    port = int(os.environ.get("PORT", 8000))
     app.run(host="0.0.0.0", port=port, debug=False)
